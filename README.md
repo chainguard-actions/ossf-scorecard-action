@@ -8,7 +8,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 | Version | Tag | Upstream commit |
 |---------|-----|-----------------|
-| v2.4.3 | [`v2.4.3`](https://github.com/chainguard-actions/scorecard-action/tree/v2.4.3) | — |
+| v2.4.3 | [`v2.4.3`](https://github.com/chainguard-actions/ossf--scorecard-action/tree/v2.4.3) | — |
 
 ## Privacy
 
