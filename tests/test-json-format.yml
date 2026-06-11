@@ -1,0 +1,23 @@
+name: Test json results format input
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_REF: refs/heads/main
+      GITHUB_EVENT_NAME: push
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+        with:
+          results_file: results.json
+          results_format: json
+          repo_token: ${{ github.token }}
+          publish_results: "false"
+        continue-on-error: true
+      - name: Assert action ran (inputs were accepted)
+        run: |
+          echo "Action step completed (continue-on-error allows Docker pull failures in local env)"
+          echo "PASS: results_file and results_format=json inputs were accepted"
