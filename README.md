@@ -11,6 +11,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 | v2.4.3 | [`v2.4.3`](https://github.com/chainguard-actions/ossf-scorecard-action/tree/v2.4.3) | [`4eaacf0`](https://github.com/ossf/scorecard-action/commit/4eaacf0543bb3f2c246792bd56e8cdeffafb205a) | [`HARDENING.md`](https://github.com/chainguard-actions/ossf-scorecard-action/blob/v2.4.3/HARDENING.md) |
 | v2.4.4 | [`v2.4.4`](https://github.com/chainguard-actions/ossf-scorecard-action/tree/v2.4.4) | [`2d11466`](https://github.com/ossf/scorecard-action/commit/2d1146689b8cda280b9bc96326124645441f03bc) | [`HARDENING.md`](https://github.com/chainguard-actions/ossf-scorecard-action/blob/v2.4.4/HARDENING.md) |
 | v2.5.0 | [`v2.5.0`](https://github.com/chainguard-actions/ossf-scorecard-action/tree/v2.5.0) | [`fa7117d`](https://github.com/ossf/scorecard-action/commit/fa7117db83c52d787ae5a89f350999701505d78e) | [`HARDENING.md`](https://github.com/chainguard-actions/ossf-scorecard-action/blob/v2.5.0/HARDENING.md) |
+| v2.6.0 | [`v2.6.0`](https://github.com/chainguard-actions/ossf-scorecard-action/tree/v2.6.0) | [`23f22cd`](https://github.com/ossf/scorecard-action/commit/23f22cd43608bae7a1f1fa2603d7314dee9538a5) | [`HARDENING.md`](https://github.com/chainguard-actions/ossf-scorecard-action/blob/v2.6.0/HARDENING.md) |
 
 ## Privacy
 
