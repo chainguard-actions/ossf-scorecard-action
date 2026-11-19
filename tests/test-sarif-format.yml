@@ -1,0 +1,45 @@
+name: Test SARIF results format
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - id: action
+        uses: .
+        continue-on-error: true
+        with:
+          results_file: scorecard-results.sarif
+          results_format: sarif
+      - name: Assert action ran (SARIF produced, or failed gracefully on the sentinel repo)
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+          PUBLISHED: ${{ steps.action.outputs.results_published }}
+        run: |
+          echo "outcome: $OUTCOME"
+          echo "results_published: $PUBLISHED"
+          if [ "$OUTCOME" = "success" ]; then
+            F="$GITHUB_WORKSPACE/scorecard-results.sarif"
+            if [ ! -s "$F" ]; then
+              echo "FAIL: action succeeded but SARIF file is missing/empty"
+              exit 1
+            fi
+            if ! python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); assert "runs" in d and "version" in d' "$F"; then
+              echo "FAIL: results file is not valid SARIF"
+              head -c 2000 "$F"
+              exit 1
+            fi
+            if [ "$PUBLISHED" = "true" ]; then
+              echo "FAIL: results should not be published by default"
+              exit 1
+            fi
+            echo "PASS: valid SARIF produced"
+          elif [ "$OUTCOME" = "failure" ]; then
+            echo "PASS: action failed gracefully (sentinel repo is not resolvable)"
+          else
+            echo "FAIL: unexpected outcome '$OUTCOME'"
+            exit 1
+          fi

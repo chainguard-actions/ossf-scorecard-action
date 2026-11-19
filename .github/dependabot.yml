@@ -1,0 +1,44 @@
+version: 2
+updates:
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    # Grouped with the workflows, so a bump updates the template pins in the
+    # same PR. Run `make generate` on that PR to update examples/.
+    directories:
+      - "/"
+      - "/internal/workflowtemplate/pins"
+    schedule:
+      interval: "weekly"
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: ":seedling:"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
+  # Maintain dependencies for Docker
+  - package-ecosystem: "docker"
+    directory: /
+    schedule:
+      interval: "weekly"
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: ":seedling:"
+    groups:
+      docker-images:
+        patterns:
+          - "*"
+
+  # Maintain dependencies for go
+  - package-ecosystem: "gomod"
+    directory: "/"
+    open-pull-requests-limit: 20
+    schedule:
+      interval: "daily"
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: ":seedling:"
